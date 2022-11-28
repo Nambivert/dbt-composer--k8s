@@ -1,1 +1,1 @@
-# dbt-composer--k8s
+# dbt-composer-k8s
