@@ -1,7 +1,7 @@
-steps: 
+steps:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker build --build-arg "_PROJECT_ID=mineral-anchor-361313" --build-arg "base_artifact=${_BASE_ARTIFACT}" --build-arg "base_image=${_BASE_IMAGE}" -t ${_REPO_NAME} ./dbt-artifact']
+  args: ['-c', 'docker build --build-arg "_PROJECT_ID=${_PROJECT_ID}" --build-arg "base_artifact=${_BASE_ARTIFACT}" --build-arg "base_image=${_BASE_IMAGE}" -t ${_REPO_NAME} .']
 
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
@@ -12,4 +12,4 @@ steps:
   args: ['-c', 'docker push australia-southeast1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}']
 
   substitutions:
-    _PROJECT_ID: mineral-anchor-361313
+    _PROJECT_ID: $PROJECT_ID
